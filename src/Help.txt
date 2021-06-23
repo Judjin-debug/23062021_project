@@ -1,0 +1,4 @@
+0             -> exit
+1_key_value   -> add key and value
+2_key         -> get key
+3             -> printAll
