@@ -13,10 +13,7 @@ public class Demo {
     public static void demo () throws IOException {
 
         Map<String, String> map = new HashMap<>();
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        BufferedReader readerHelp = new BufferedReader(new FileReader("src/Help.txt"));
         String strCurrentLine;
-
         String key;
         String value;
         DemoOptions demoOptions;
@@ -25,7 +22,7 @@ public class Demo {
 
         while (true) {
 
-            strCurrentLine = reader.readLine();
+            strCurrentLine = lineReader();
 
             if (regexCheck(strCurrentLine)) {
 
@@ -77,6 +74,15 @@ public class Demo {
 
     private static boolean regexCheck (String strCurrentLine) {
             return (strCurrentLine.matches("(0)" + "|(1_[a-zA-Z0-9]+_[a-zA-Z0-9]+)" + "|(2_[a-zA-Z0-9]+)" + "|(3)"));
+    };
+
+    private static String lineReader () {
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
+            return reader.readLine();
+        } catch (IOException iex) {
+            iex.printStackTrace();
+        };
+        return "";
     };
 
 
